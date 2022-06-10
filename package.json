@@ -7,7 +7,7 @@
     "license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/JohnnyJTH/discord.py-2.0-snippets"
+		"url": "https://github.com/JohnnyJTH/Discord.py-Snippets"
 	},
 	"engines": {
 		"vscode": "^1.28.0"
