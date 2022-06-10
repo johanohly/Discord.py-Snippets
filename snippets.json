@@ -1,37 +1,37 @@
 {
-	"New cog": {
-		"prefix": "cog",
-		"body": [
-			"class ${1:name}(commands.Cog):",
-			"\tbot: commands.Bot",
-			"",
-			"\tdef __init__(self, bot):",
-			"\t\tself.bot = bot",
-			"",
-			"async def setup(bot: commands.Bot) -> None:",
-			"\tawait bot.add_cog(${1:name}(bot))"
-		],
-		"description": "Simple cog with setup and bot typehint."
-	},
-	"Cog setup": {
-		"prefix": "setup",
-		"body": [
-			"async def setup(bot: commands.Bot) -> None:",
-			"\tawait bot.add_cog(${1:name}(bot))"
-		],
-		"description": "Setup function for a cog."
-	},
-	"New command": {
-		"prefix": "command",
-		"body": [
-			"\t@app_commands.command()",
-			"\t@app_commands.describe()",
-			"\tasync def ${1:name}(self, interaction: discord.Interaction):",
-			"\t\t\"\"\"",
-			"\t\t${2:description}",
-			"\t\t\"\"\"",
-			"\t\tawait inter.response.send_message()"
-		],
-		"description": "New command in a cog"
-	}
+  "New cog": {
+    "prefix": "cog",
+    "body": [
+      "class ${1:name}(commands.Cog):",
+      "\tbot: commands.Bot",
+      "",
+      "\tdef __init__(self, bot):",
+      "\t\tself.bot = bot",
+      "",
+      "async def setup(bot: commands.Bot) -> None:",
+      "\tawait bot.add_cog(${1:name}(bot))"
+    ],
+    "description": "Simple cog with setup and bot typehint."
+  },
+  "Cog setup": {
+    "prefix": "setup",
+    "body": [
+      "async def setup(bot: commands.Bot) -> None:",
+      "\tawait bot.add_cog(${1:name}(bot))"
+    ],
+    "description": "Setup function for a cog."
+  },
+  "New command": {
+    "prefix": "command",
+    "body": [
+      "\t@app_commands.command()",
+      "\t@app_commands.describe()",
+      "\tasync def ${1:name}(self, interaction: discord.Interaction):",
+      "\t\t\"\"\"",
+      "\t\t${2:description}",
+      "\t\t\"\"\"",
+      "\t\tawait interaction.response.send_message()"
+    ],
+    "description": "New command in a cog"
+  }
 }
