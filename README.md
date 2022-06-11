@@ -12,8 +12,13 @@ This extension provides a simple set of VSCode snippets for discord.py 2.0 proje
 ![Extension Showcase](img/showcase.gif)
 
 # Snippets
-| **Snippet Description**         | **Snippet Input** |
-|---------------------------------|-------------------|
-| Simple cog with setup function. | `dpycog`          |
-| Setup function for a cog.       | `dpysetup`        |
-| New command in a cog.           | `dpycommand`      |
+| **Snippet Description**               | **Snippet Input** |
+|---------------------------------------|-------------------|
+| New bot with cog loading.             | `dpybot`          |
+| Simple cog with setup function.       | `dpycog`          |
+| Setup function for a cog.             | `dpysetup`        |
+| New command in a cog.                 | `dpycommand`      |
+| New embed with title and description. | `dpyembed`        |
+| Add a field to an embed.              | `dpyfield`        |
+| Add a footer to an embed.             | `dpyfooter`       |
+| Add an author to an embed.            | `dpyauthor`       |

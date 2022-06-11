@@ -2,6 +2,10 @@
   "New cog": {
     "prefix": "dpycog",
     "body": [
+      "from discord.ext import commands",
+      "from discord import app_commands",
+      "",
+      "",
       "class ${1:name}(commands.Cog):",
       "\tbot: commands.Bot",
       "",
@@ -33,5 +37,81 @@
       "\tawait interaction.response.send_message()"
     ],
     "description": "New command in a cog."
+  },
+  "New bot": {
+    "prefix": "dpybot",
+    "body": [
+      "import asyncio",
+      "import contextlib",
+      "from os import listdir",
+      "from pathlib import Path",
+      "",
+      "from discord import Activity, ActivityType, Intents",
+      "from discord.ext.commands import Bot as BotBase",
+      "",
+      "",
+      "class Bot(BotBase):",
+      "\tdef __init__(self):",
+      "\t\tsuper().__init__(intents=Intents.default())",
+      "",
+      "\t\tself.cwd = str(Path(__file__).parents[0].parents[0])",
+      "\t\tself.token = \"\" # Your bot token or preferably a call to dot env.",
+      "",
+      "\tasync def on_connect(self):",
+      "\t\tawait self.change_presence(activity=Activity(type=ActivityType.watching, name=\"Slash Commands\"))",
+      "",
+      "\tasync def setup_hook(self):",
+      "\t\tfor file in listdir(f\"{self.cwd}/cogs\"):",
+      "\t\t\tif file.endswith(\".py<\") and not file.startswith(\"_\"):",
+      "\t\t\t\ttry:",
+      "\t\t\t\t\tawait self.load_extension(f\"cogs.{file[:-3]}\")",
+      "\t\t\t\texcept Exception as e:",
+      "\t\t\t\t\tprint(f\"Error loading {file[:-3]} cog: {e}\")",
+      "",
+      "\tasync def main(self) -> None:",
+      "\t\tasync with self:",
+      "\t\t\tawait self.start(self.token)",
+      "",
+      "\tdef starter(self):",
+      "\t\twith contextlib.suppress(KeyboardInterrupt):",
+      "\t\t\tasyncio.run(self.main())",
+      "",
+      "",
+      "# main.py file (run this file to start the bot)",
+      "# Remember to import the Bot class",
+      "# or keep this in the same file.",
+      "if __name__ == \"__main__\":",
+      "\tbot = Bot()",
+      "\tbot.starter()"
+    ],
+    "description": "New bot with cog loading."
+  },
+  "New embed": {
+    "prefix": "dpyembed",
+    "body": [
+        "embed = discord.Embed(title=\"$1\", description=\"$2\")"
+    ],
+    "description": "New embed with title and description."
+  },
+  "Add embed field": {
+      "prefix": "dpyfield",
+      "body": [
+          "${1:embed}.add_field(name=\"$2\", value=\"$3\", inline=${4|True,False|})"
+      ],
+      "description": "Add a field to an embed."
+  },
+  "Add embed footer": {
+      "prefix": "dpyfooter",
+      "body": [
+          "${1:embed}.set_footer(text=\"$2\"${3:, icon_url=\"\"})"
+      ],
+      "description": "Add a footer to an embed."
+  },
+  "Add embed author": {
+      "prefix": "dpyauthor",
+      "body": [
+          "${1:embed}.set_author(name=\"$2\"${3:, icon_url=\"\"}${4:, url=\"\"})"
+      ],
+      "description": "Add an author to an embed."
   }
 }
