@@ -16,7 +16,7 @@
     "Snippets"
   ],
   "qna": false,
-  "icon": "./icon.png",
+  "icon": "img/icon.png",
   "contributes": {
     "snippets": [
       {
